@@ -64,6 +64,27 @@ static int Prompt(string message)// Метод запроса числа.
     int result = int.Parse(readInput);
     return result;
 }
+void Viewer(int[,] arr, int ViewerNumber)
+{    
+  int count = 0;
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+      
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            if(arr[i,j] == ViewerNumber)
+            {
+              Console.WriteLine($"Искомый элемент находится на позиции: {i}, {j}");
+            }
+            else
+            {
+              count++;
+            }
+        }
+    }
+    if (count == arr.GetLength(0)*arr.GetLength(1))
+    Console.WriteLine("Искомого значения нет!");
+}
 
 void Task_47() // Метод для задания двумерного массива размером m×n, заполненного случайными вещественными числами.
 {
@@ -88,8 +109,6 @@ void Task_50() // Метод, который принимает на вход э
 Console.WriteLine("Введите значение элемента: ");
 int ViewerNumber = Convert.ToInt32(Console.ReadLine());
 
-//FillArray(int[,] arr)
-    //{
         int[,] arr = new int[new Random().Next(3,10), new Random().Next(4,10)];
        for (int i = 0; i < arr.GetLength(0); i++)
         {  
@@ -100,31 +119,6 @@ int ViewerNumber = Convert.ToInt32(Console.ReadLine());
                 Console.Write(arr[i, j] + " ");
             }
         }   
-    //}
-
-void Viewer(int[,] arr, int ViewerNumber)
-{    
-  int count = 0;
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-      
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            if(arr[i,j] == ViewerNumber)
-            {
-              Console.WriteLine($"Искомый элемент находится на позиции: {i}, {j}");
-            }
-            else
-            {
-              count++;
-            }
-        }
-    }
-    if (count == arr.GetLength(0)*arr.GetLength(1))
-    Console.WriteLine("Искомого значения нет!");
-}
-
-//FillArray(arr);
 Console.WriteLine();
 Viewer(arr,ViewerNumber);
 
@@ -133,63 +127,32 @@ Viewer(arr,ViewerNumber);
 void Task_52() // Метод для задания двумерного массива из целых чисел и 
 //нахождения среднее арифметического элементов в каждом столбце.
 {
-    int[,] arr = new int[new Random().Next(3,10), new Random().Next(4,10)];
-       for (int i = 0; i < arr.GetLength(0); i++)
-        {  
-            Console.WriteLine();
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                arr[i, j] = new Random().Next(0, 10);
-                Console.Write(arr[i, j] + " ");
-            }
-        }   
-        
-int x = 0;
-int sum = 0;
-int Viewer1(int[,] arr)
-{    
-    
+int[,] arr = new int[new Random().Next(3,10), new Random().Next(4,10)];
     for (int i = 0; i < arr.GetLength(0); i++)
+        {  
+         Console.WriteLine();
+            for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                 arr[i, j] = new Random().Next(0, 10);
+                 Console.Write(arr[i, j] + " ");
+                }
+        }   
+    Console.WriteLine();   
+
+    Console.WriteLine();  
+ 
+    int rows = arr.GetLength(0);
+    int cols = arr.GetLength(1);
+
+    for (int j = 0; j < cols; j++)
     {
-        int j = x;
-        sum += arr[i,j]; 
+        int sum = 0;
+        for (int i = 0; i < rows; i++)
+        {
+           sum +=arr[i, j];
+        }
+        double result = (double)sum/rows;  
+        Console.WriteLine(result);  
     }
-    return sum;
 }
 
-Viewer1(arr);
-Console.WriteLine();
-Console.WriteLine(sum);
-
-}
-
-
-// {
-//     int[,] arr = new int[new Random().Next(3,10), new Random().Next(4,10)];
-//        for (int i = 0; i < arr.GetLength(0); i++)
-//         {  
-//             Console.WriteLine();
-//             for (int j = 0; j < arr.GetLength(1); j++)
-//             {
-//                 arr[i, j] = new Random().Next(0, 10);
-//                 Console.Write(arr[i, j] + " ");
-//             }
-//         }   
-
-// doudle sum = 0;
-// int Viewer1(int[,] arr)
-// {    
-    
-//     for (int i = 0; i < arr.GetLength(0); i++)
-//     {
-//         int j = 0;
-//         sum += arr[i,j]; 
-//     }
-//     return sum;
-// }
-
-// Viewer1(arr);
-// Console.WriteLine();
-// Console.WriteLine(sum);
-
-// }
